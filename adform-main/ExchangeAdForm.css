@@ -1,0 +1,12 @@
+select{
+    margin: 10px 0px;
+    width: 80%;  
+    
+  }
+
+.currentlyWorkingWith {
+    background-color: red;
+}
+  #mainCats #subCat {
+      display: block;
+  }

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="ExchangeAdForm.css">
+    
+</head>
+<body>
+   <!-- You'll need to come back here to set the method and action of the form later -->
+    <form action="">
+        <fieldset id="step1">
+            <legend>Select Your Classification</legend>
+            <div id="chooseCategory" class="selector" name="mainClass">
+                <label for="mainCat">Please select a category for your ad</label><br>
+                <select name="mainCats" id="mainCats" onchange="chooseSub()" required></select>
+                </div>
+            <div id="subClass" class="selector" name="subClass">
+                <label for="subCat">Please Choose a Sub-Category</label><br>
+                <select name="subCat" id="subCat" required>
+                <option name='chooseSubCat' value="chooseSubCat">Pick choose a sub-category</option>
+            </select>
+        </div>
+        </fieldset>
+    
+    
+    <!-- FIELDSET FOR WRITING AD - STEP 2 -->
+
+<fieldset class="" id="writeAdFS" name="writeAdFS">
+    <legend>
+        Step 2 - Write Your Ad Copy
+    </legend>
+    <p class="form-row instructions">
+        <ul>
+            <li>
+                Include Price & Your Phone Number
+            </li>
+            <li>
+                For Garage/ Estate Sales, Include an Address
+            </li>
+        </ul>
+        </p>
+        <div class="form-row textarea">
+            <label for="ad-copy">Ad Text</label>
+            <textarea class="ad-copy" id="input"></textarea>
+            <p class="counter">Word Count: <span id="count">0</span></p>
+        </div>
+        <button type="button" class="form-button" id="prev-btn-2">Previous</button>
+        <button type="button" class="form-button" id="next-btn-2">Next</button>
+
+
+</fieldset>       
+
+    <!-- STEP 3 - SELECTING photoYes -->
+
+     <!-- FIELDSET FOR PHOTO PACKAGES - STEP 3 -->
+
+
+     <fieldset id="step3">
+        <legend>Step 3 - Choose a Package</legend>
+        
+        <div class="form row map">
+            <img name="coverageMap"
+                src="https://s3-us-west-2.amazonaws.com/userdata123/www/imagefields/98660/98660532.jpg?_=1644519073296"
+                align="center" alt="Exchange Coverage Map">
+        </div>
+ 
+        <div id="choosePackage" class="selector" name="photoYN">
+            <label for="photoYN">Would You Like To Include a Photo With Your Ad?</label><br>
+            <select onchange="includePhoto()" name="photoYN" id="photoYN" required>
+                <option value="SelectSub" selected="selected">Select an option</option>
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+            </select>
+
+            </div>
+        <div id="subClass" class="selector" name="subClass">
+            <label for="adPackage" id="packageLabel">Please Select A Package</label><br>
+            <select name="adPackage" id="adPackage" required>
+            <option name='pickPackage' value="pickPackage">Choose One</option>
+        </select>
+    </div>
+    </fieldset>
+
+
+
+
+
+
+       
+       <!-- ADD IN THE CONTROLS FOR UPLOADING A PHOTO -->
+       
+       
+       
+       
+    
+    </form>
+<script src="ExchangeAdForm.js"></script>
+</body>
+</html>
