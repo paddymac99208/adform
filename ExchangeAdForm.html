@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="ExchangeAdForm.css">
+    
+</head>
+<body>
+   <!-- You'll need to come back here to set the method and action of the form later -->
+    <form action="">
+        <fieldset id="step1">
+            <legend>Select Your Classification</legend>
+            <div id="chooseCategory" class="selector" name="mainClass">
+                <label for="mainCat">Please select a category for your ad</label><br>
+                <select name="mainCats" id="mainCats" onchange="chooseSub()" required></select>
+                </div>
+            <div id="subClass" class="selector" name="subClass">
+                <label for="subCat">Please Choose a Sub-Category</label><br>
+                <select name="subCat" id="subCat" required>
+                <option name='chooseSubCat' value="chooseSubCat">Pick choose a sub-category</option>
+            </select>
+        </div>
+        </fieldset>
+    
+    
+    <!-- FIELDSET FOR WRITING AD - STEP 2 -->
+
+<fieldset class="" id="writeAdFS" name="writeAdFS">
+    <legend>
+        Step 2 - Write Your Ad Copy
+    </legend>
+    <p class="form-row instructions">
+        <ul>
+            <li>
+                Include Price & Your Phone Number
+            </li>
+            <li>
+                For Garage/ Estate Sales, Include an Address
+            </li>
+        </ul>
+        </p>
+        <div class="form-row textarea">
+            <label for="ad-copy">Ad Text</label>
+            <textarea class="ad-copy" id="input"></textarea>
+            <p class="counter">Word Count: <span id="count">0</span></p>
+        </div>
+        <button type="button" class="form-button" id="prev-btn-2">Previous</button>
+        <button type="button" class="form-button" id="next-btn-2">Next</button>
+
+
+</fieldset>       
+
+    <!-- STEP 3 - SELECTING photoYes -->
+
+     <!-- FIELDSET FOR PHOTO PACKAGES - STEP 3 -->
+     <fieldset class="" id="photoPackagesFS" name="photoPackagesFS">
+        <legend>Step 3 - Select Your Package & Markets</legend>
+               <div class="form row map">
+                   <img name="coverageMap"
+                       src="https://s3-us-west-2.amazonaws.com/userdata123/www/imagefields/98660/98660532.jpg?_=1644519073296"
+                       align="center" alt="Exchange Coverage Map">
+               </div>
+        
+               <!--ADD PHOTO TO AD -- YES OR NO-->
+       
+        <div class="form-row dropdown" id="photoYesNo" name="photoYesNo">
+           <label for="photoYN">Would You Like To Include a Photo With Your Ad?</label>
+           <select onchange="includePhoto()" name="photoYN" id="photoYN" required>
+               <option value="SelectSub" selected="selected">Select an option</option>
+               <option value="yes">Yes</option>
+               <option value="no">No</option>
+           </select>
+       </div>
+       <span id="adPhotoPackages"></span>
+       
+       
+       
+       
+       
+       
+       <div class="" id="photoPackageNo" name="photoPackageNo">
+       
+       <!--NON-PHOTO PACKAGES-->
+       
+       <div class="form-row dropdown subclass" id="nonPhotoPackage" name="nonPhotoPackage">
+           <label for="photoNo">Please Choose a Package</label>
+           <select onchange="noPhoto()" name="photoNo" id="photoNo" required>
+               <option value="SelectSub" selected="selected">Choose a Package</option>
+               <option value="5">5 Market 'Super Saver' - $35</option>
+               <option value="4">4 Markets - $30</option>
+               <option value="3">3 Markets - $26</option>
+               <option value="2">2 Markets - $18</option>
+               <option value="1">1 Market - $10</option>
+           </select>
+       </div>
+       
+       <!--CHECKBOXES FOR 5 MARKETS-->
+       <div class="form row checkboxes subclass nonPhoto" id="5market" name="5market">
+           <p class="packageName">Choose 5 Editions For Your Ad To Appear In</p>
+           <label><input type="checkbox" name="5market" id="markets" checked>Exchange - Eastern Washington/ North
+               Idaho</label>
+           <label><input type="checkbox" name="5market" id="markets" checked>Exchange - Lewiston/ Clarkston
+               Valley</label>
+           <label><input type="checkbox" name="5market" id="markets" checked>Exchange - Wenatchee/ Moses Lake</label>
+           <label><input type="checkbox" name="5market" id="markets" checked>Nickels Worth - North Idaho/ Western
+               Montana</label>
+           <label><input type="checkbox" name="5market" id="markets" checked>Giant Nickel Online - Tri-Cities</label>
+       </div>
+       
+       
+       <!--CHECKBOXES FOR 4 MARKETS-->
+       <div class="form row checkboxes subclass nonPhoto" id="4market" name="4market">
+           <p class="packageName">Choose 4 Editions For Your Ad To Appear In</p>
+           <label><input type="checkbox" name="4market" id="markets">Exchange - Eastern Washington/ North Idaho</label>
+           <label><input type="checkbox" name="4market" id="markets">Exchange - Lewiston/ Clarkston Valley</label>
+           <label><input type="checkbox" name="4market" id="markets">Exchange - Wenatchee/ Moses Lake</label>
+           <label><input type="checkbox" name="4market" id="markets">Nickels Worth - North Idaho/ Western
+               Montana</label>
+           <label><input type="checkbox" name="4market" id="markets">Giant Nickel Online - Tri-Cities</label>
+       </div>
+       
+       
+       <!--CHECKBOXES FOR 3 MARKETS-->
+       
+       <div class="form row checkboxes subclass" id="3market" name="3market">
+           <p class="packageName">Choose 3 Editions For Your Ad To Appear In</p>
+           <label><input type="checkbox" name="3market" id="markets">Exchange - Eastern Washington/ North Idaho</label>
+           <label><input type="checkbox" name="3market" id="markets">Exchange - Lewiston/ Clarkston Valley</label>
+           <label><input type="checkbox" name="3market" id="markets">Exchange - Wenatchee/ Moses Lake</label>
+           <label><input type="checkbox" name="3market" id="markets">Nickels Worth - North Idaho/ Western
+               Montana</label>
+           <label><input type="checkbox" name="3market" id="markets">Giant Nickel Online - Tri-Cities</label>
+       </div>
+       
+       <!--CHECKBOXES FOR 2 MARKETS-->
+       
+       <div class="form row checkboxes subclass" id="2market" name="2market">
+           <p class="packageName">Choose 2 Editions For Your Ad To Appear In</p>
+           <label><input type="checkbox" name="2market" id="markets">Exchange - Eastern Washington/ North Idaho</label>
+           <label><input type="checkbox" name="2market" id="markets">Exchange - Lewiston/ Clarkston Valley</label>
+           <label><input type="checkbox" name="2market" id="markets">Exchange - Wenatchee/ Moses Lake</label>
+           <label><input type="checkbox" name="2market" id="markets">Nickels Worth - North Idaho/ Western
+               Montana</label>
+           <label><input type="checkbox" name="2market" id="markets">Giant Nickel Online - Tri-Cities</label>
+       </div>
+       
+       <!--CHECKBOXES FOR 1 MARKETS-->
+       
+       <div class="form row checkboxes subclass" id="1market" name="1market">
+           <p class="packageName">Choose 1 Edition For Your Ad To Appear In</p>
+           <label><input type="checkbox" name="1market" id="markets">Exchange - Eastern Washington/ North Idaho</label>
+           <label><input type="checkbox" name="1market" id="markets">Exchange - Lewiston/ Clarkston Valley</label>
+           <label><input type="checkbox" name="1market" id="markets">Exchange - Wenatchee/ Moses Lake</label>
+           <label><input type="checkbox" name="1market" id="markets">Nickels Worth - North Idaho/ Western
+               Montana</label>
+           <label><input type="checkbox" name="1market" id="markets">Giant Nickel Online - Tri-Cities</label>
+       </div>
+       
+       <!-- <div id="showCount">
+       <label for="countEditions">Number Checked</label>
+       <input type="text" name="countEditions" id="countEditions">
+       </div>
+       -->
+       
+       
+       
+       </div>
+       
+       <div class=""  id="photoPackageYes" name="photoPackageYes">
+       
+       <!--PHOTO PACKAGES-->
+       
+       <div class="form-row dropdown subclass" id="photoPackages" name="photoPackages">
+           <label for="photoYes">Please Choose a Photo Package</label>
+           <select onchange="addPhoto()" name="photoYes" id="photoYes" required>
+               <option value="SelectSub" selected="selected">Choose a Photo Package</option>
+               <option value="photo4">Photo Ad in 4 Markets - $55</option>
+               <option value="photo1">Photo Ad in 1 Market - Text in other 3 Markets - $35</option>
+               <option value="photoBYO">Build Your Own Package</option>
+           </select>
+       </div>
+       <!-- STATIC DISPLAY FOR PHOTO AD IN 4 MARKETS -->
+       
+       <div class="form-row subclass" id="photo4Package" name="photo4Package">
+           <p>Your ad will appear in these editions</p>
+           <ul>
+               <li>Exchange - Eastern Washington/ North Idaho Edition</li>
+               <li>Exchange - Wenachee/ Moses Lake Edition</li>
+               <li>Exchange - Lewiston/ Clarkston Valley Edition</li>
+               <li>Nickels Worth - North Idaho/ Western Montana Edition</li>
+           </ul>
+       </div>
+       
+       
+       <!-- PHOTO AD 1 MARKET - TEXT IN 3 MARKETS -->
+       
+       <div class="form-row subclass" id="photoText-photo" name="photoText-photo">
+       <p class="packageName">Choose The Edition that you would like your photo to appear in</p>
+       <label><input type="radio" name="onePhoto" id="onePhoto">Exchange - Eastern Washington/ North Idaho</label>
+       <label><input type="radio" name="onePhoto" id="onePhoto">Exchange - Lewiston/ Clarkston Valley</label>
+       <label><input type="radio" name="onePhoto" id="onePhoto">Exchange - Wenatchee/ Moses Lake</label>
+       <label><input type="radio" name="onePhoto" id="onePhoto">Nickels Worth - North Idaho/ Western Montana</label>
+       </div>
+       
+       <div class="form-row subclass" id="photoText-text" name="photoText-text">
+       <p class="packageName">Select 3 Editions for your Text only ad to appear in</p>
+       <label><input type="checkbox" name="threeTextOnly" id="threeTextOnly">Exchange - Eastern Washington/ North Idaho</label>
+       <label><input type="checkbox" name="threeTextOnly" id="threeTextOnly">Exchange - Lewiston/ Clarkston Valley</label>
+       <label><input type="checkbox" name="threeTextOnly" id="threeTextOnly">Exchange - Wenatchee/ Moses Lake</label>
+       <label><input type="checkbox" name="threeTextOnly" id="threeTextOnly">Nickels Worth - North Idaho/ Western Montana</label>
+       <label><input type="checkbox" name="threeTextOnly" id="threeTextOnly">Giant Nickel Online - Tri-Cities</label>
+       </div>
+       
+       <!-- PHOTO AD PACKAGE - BYO -->
+       
+       <div class="form-row subclass" id="photoText-BYO" name="photoText-BYO">
+       <p class="packageName">Choose the Editions you would like your photo Ad to appear in</p>
+       <label><input type="checkbox" name="5market" id="markets">Exchange - Eastern Washington/ North Idaho - $15</label>
+       <label><input type="checkbox" name="5market" id="markets">Exchange - Lewiston/ Clarkston Valley - $15</label>
+       <label><input type="checkbox" name="5market" id="markets">Exchange - Wenatchee/ Moses Lake - $15</label>
+       <label><input type="checkbox" name="5market" id="markets">Nickels Worth - North Idaho/ Western Montana - $19</label>
+       </div>
+       
+       
+       
+       
+       </div>
+       
+       <!-- ADD IN THE CONTROLS FOR UPLOADING A PHOTO -->
+       
+       
+       
+       <fieldset id="chooseEditionTest" class="chooseEditionTest">
+        <legend>Testing to populate Select Menu from Array</legend>
+
+<span id="selectPhotoEdition"></span>
+    </fieldset>
+    
+    
+    </form>
+<script src="ExchangeAdForm.js"></script>
+</body>
+</html>
