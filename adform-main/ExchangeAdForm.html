@@ -23,9 +23,9 @@
                 <option name='chooseSubCat' value="chooseSubCat">Pick choose a sub-category</option>
             </select>
         </div>
+        <button name="step1" onclick="assignStep1()">Next</button>    
+
         </fieldset>
-    
-    
     <!-- FIELDSET FOR WRITING AD - STEP 2 -->
 
 <fieldset class="" id="writeAdFS" name="writeAdFS">
@@ -78,10 +78,12 @@
             </div>
         <div id="subClass" class="selector" name="subClass">
             <label for="adPackage" id="packageLabel">Please Select A Package</label><br>
-            <select name="adPackage" id="adPackage" required>
+            <select name="adPackage" id="adPackage" onchange="selectedPackage()" required>
             <option name='pickPackage' value="pickPackage">Choose One</option>
         </select>
     </div>
+    <div id="subClassCheckbox"></div>
+    <div id="radioPhotos"></div>
     </fieldset>
 
 

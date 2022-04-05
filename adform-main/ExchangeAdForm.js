@@ -50,6 +50,14 @@ const classifications = [
 ];
 const myClass = [];
 let mainClass = [];
+let myAdPackage = [
+  {mainCat: ""},
+  {subCat: ""},
+  {adCopy: ""},
+  {baseprice: "temp"},
+  {wordCount: ""},
+
+];
 var selectBox = document.getElementById("mainCats");
 var selectList = document.getElementById("choosePackage");
 
@@ -74,8 +82,10 @@ function buildArray() {
     selectBox.options.add(option);
   }
 }
+
 function chooseSub() {
   var x = document.getElementById("mainCats").value;
+  myAdPackage[0].mainCat = x;
   var subclassSelect = document.getElementById("subCat");
   subclassSelect.innerHTML = "<option name='default' value='default'>Choose One</option>";
   let filterSubClass = classifications.filter((classes) => classes.mainClass === x);
@@ -85,8 +95,18 @@ function chooseSub() {
     let option = document.createElement("option");
     option.text = option.value = value;
     subclassSelect.options.add(option);
-  }
+  }  
 }
+
+//create a button for next step and assign this function
+
+function assignStep1() {
+  event.preventDefault();
+  var x = document.getElementById("mainCats").value;
+  var y = document.getElementById("subCat").value;
+  myAdPackage[0].mainCat = x;
+  myAdPackage[1].subCat = y;
+  }
 
 /***********************************************
  * STEP 2 - WRITE YOUR AD COPY
@@ -153,8 +173,13 @@ function myWordCounter() {
         rWords +
         "</h3>";
     }
+    myAdPackage[4].wordCount = globalWordCounter;
     return globalWordCounter;
   }
+}
+function assignStep2() {
+  var adCopy = document.getElementById('input').value;
+  myAdPackage[2].adCopy = adCopy;
 }
 
 /*****************************************************************************
@@ -187,7 +212,6 @@ const editions = [
 //TRY TO POPULATE ONLY 1 Selector, CLEAR THE INNERHTML FIRST ON EACH CHANGE
 
 function includePhoto() {
-  //let selectList = document.getElementById('choosePackage');
   let packageType = document.getElementById("photoYN").value;
   let labelName = document.getElementById("packageLabel");
   if (packageType == "yes") {
@@ -204,19 +228,120 @@ function includePhoto() {
   }
 }
 
+function selectedPackage() {
+  let package = document.getElementById('adPackage').value;
+  let myDiv = document.getElementById('subClassCheckbox')
+  if(package === "55"){
+    myDiv.innerHTML = " ";
+    buildCheckboxes();
+  } else if (package === "35"){
+    myDiv.innerHTML = " ";
+    
+/*Create a function that will show the list of radio buttons, assign them all a click function
+and when clicked 1. Clear a div for the checkboxes, and then populate the div with checkboxes, see
+if you can remove the value of the radio selected value from the array.
+
+create array, then iterate through the array and pull the value out...but need to reset the array every time
+so all of the values will be there.*/
+    patFunction();
+  } else {
+    myDiv.innerHTML = " ";
+    myDiv.innerHTML = "not set either"
+  }
+}
+
+
+function patFunction(){
+  let photoRadio = editions.filter((item) => item.photo === 'yes');
+  console.table(photoRadio);
+  //construct the array into radio buttons
+  let myDiv = document.getElementById('subClassCheckbox');
+  for(let item in photoRadio) {
+    let name = photoRadio[item].edition;
+    let value = photoRadio[item].edition;
+    let radioDiv = document.getElementById('radioPhotos');
+    let myRadio = document.createElement('input');
+    myRadio.type = 'radio';
+    myRadio.id = name;
+    myRadio.value = value;
+    myRadio.onchange = showText();
+    myRadio.name = 'photo1';
+    //myRadio.onchange = radioPackage();
+    let label = document.createElement('label');
+    label.htmlFor = name;
+    label.appendChild(document.createTextNode(name));
+    let br = document.createElement('br');
+        myDiv.appendChild(myRadio);
+    myDiv.appendChild(label)
+    myDiv.appendChild(br);
+
+  }
+  //function to show the text editions 
+  showText();
+  
+}
+
+
+function showText() {
+  console.log('hi')
+  
+}
+
+function radioPackage() {
+  console.log('clicked');
+}
+
+//passing the myFilter function the parameters of ([adPackages(array)], Yes or No)
+
 function myFilter(array, value, list, label) {
   //label.innerHTML = "<option name='default' value='default'>It functions Choose One</option>";
   let filterArray = array.filter((item) => item.photo === value);
-  var fResults = filterArray.map((adPackage) => adPackage.package);
+  console.table(filterArray);
+  //var fResults = filterArray.map((adPackage) => adPackage.package);
+  //console.log(fResults);
   var selectPackage = document.getElementById("adPackage");
-  for (var item in fResults) {
-    var value = fResults[item];
+  for (var item in filterArray) {
+    var packageText = filterArray[item].package;
+    var value = filterArray[item].value;
+    console.log(value);
     selectPackage = document.getElementById("adPackage");
     let option = document.createElement("option");
-    option.text = option.value = value;
+    option.text = packageText;
+    option.value = value;
     selectPackage.options.add(option);
   }
+  
 }
+
+function buildCheckboxes() {
+  let photoEditions = editions.filter((item) => item.photo === 'yes');
+  for(var item in photoEditions){
+    var edition = photoEditions[item].edition;
+    var checkbox = document.createElement('input');
+    checkbox.type = 'checkbox';
+checkbox.id = edition;
+var label = document.createElement('label')
+label.htmlFor = edition;
+label.appendChild(document.createTextNode(edition));
+var br = document.createElement('br');
+let container = document.getElementById('subClassCheckbox');
+container.appendChild(checkbox);
+container.appendChild(label);
+container.appendChild(br);
+  }
+  //assignPackage();
+}
+
+
+//Grab the values from please seledt a photo package and assign it the value
+//can the value be assigned from the filter
+function assignPackage() {
+  let getBasePrice = document.getElementById('adPackage').value;
+  let value = getBasePrice
+  myAdPackage[3].baseprice = value
+}
+
+
 
 
 
