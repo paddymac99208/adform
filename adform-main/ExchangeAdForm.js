@@ -264,9 +264,8 @@ function patFunction(){
     myRadio.type = 'radio';
     myRadio.id = name;
     myRadio.value = value;
-    myRadio.onchange = showText();
     myRadio.name = 'photo1';
-    //myRadio.onchange = radioPackage();
+    myRadio.setAttribute('onclick', 'showText()');
     let label = document.createElement('label');
     label.htmlFor = name;
     label.appendChild(document.createTextNode(name));
@@ -276,19 +275,24 @@ function patFunction(){
     myDiv.appendChild(br);
 
   }
-  //function to show the text editions 
-  showText();
-  
-}
-
+  }
 
 function showText() {
-  console.log('hi')
-  
+var radios = document.getElementsByName('photo1');
+var selected = Array.from(radios).find(radio => radio.checked);
+let x = selected.value;
+let pop = Array.from(editions).find(({editions}) => editions === x);
+console.table(pop)
 }
-
-function radioPackage() {
-  console.log('clicked');
+  
+function popValue(name) {
+  
+  let text3 = editions;
+          for(let item in text3){
+            if(item.edition === name){
+              console.log('they popped!');
+            }
+          }  
 }
 
 //passing the myFilter function the parameters of ([adPackages(array)], Yes or No)
