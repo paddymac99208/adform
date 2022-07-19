@@ -1,7 +1,10 @@
-select{
-    margin: 10px 0px;  
-    
-  }
-  #mainCats #subCat {
-      display: block;
-  }
+select {
+  margin: 10px 0px;
+}
+#mainCats #subCat {
+  display: block;
+}
+
+#noPhotoDiv {
+  display: none;
+}

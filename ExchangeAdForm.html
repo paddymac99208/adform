@@ -11,7 +11,7 @@
 <body>
    <!-- You'll need to come back here to set the method and action of the form later -->
     <form action="">
-        <fieldset id="step1">
+        <fieldset id="step1" style="background-color:green">
             <legend>Select Your Classification</legend>
             <div id="chooseCategory" class="selector" name="mainClass">
                 <label for="mainCat">Please select a category for your ad</label><br>
@@ -28,7 +28,7 @@
     
     <!-- FIELDSET FOR WRITING AD - STEP 2 -->
 
-<fieldset class="" id="writeAdFS" name="writeAdFS">
+<fieldset class="" id="writeAdFS" name="writeAdFS" style="background-color:green">
     <legend>
         Step 2 - Write Your Ad Copy
     </legend>
@@ -74,30 +74,40 @@
                <option value="no">No</option>
            </select>
        </div>
+       
+       <div>
        <span id="adPhotoPackages"></span>
        
-       
-       
-       
-       
-       
-       <div class="" id="photoPackageNo" name="photoPackageNo">
-       
-       <!--NON-PHOTO PACKAGES-->
-       
-       <div class="form-row dropdown subclass" id="nonPhotoPackage" name="nonPhotoPackage">
-           <label for="photoNo">Please Choose a Package</label>
-           <select onchange="noPhoto()" name="photoNo" id="photoNo" required>
-               <option value="SelectSub" selected="selected">Choose a Package</option>
-               <option value="5">5 Market 'Super Saver' - $35</option>
-               <option value="4">4 Markets - $30</option>
-               <option value="3">3 Markets - $26</option>
-               <option value="2">2 Markets - $18</option>
-               <option value="1">1 Market - $10</option>
-           </select>
        </div>
        
-       <!--CHECKBOXES FOR 5 MARKETS-->
+       
+       
+       <div id="noPhotoDiv">
+       <span id="photoPackageNo" name="photoPackageNo"></span>
+    <select id="nonPhotoPackages" name="nonPhotoPackages" onchange="nonPhotoEditions()">
+    <option value="Select A Package" class="nonPhotoPackages">Select A Package</option>
+    </select>
+    </div>
+
+
+       <!--NON-PHOTO PACKAGES
+    
+     
+   <div class="form-row dropdown subclass" id="nonPhotoPackages" name="nonPhotoPackage">
+        <label for="photoNo">Please Choose a Package</label>
+        <select onchange="noPhoto()" name="photoNo" id="photoNo" required>
+            <option value="SelectSub" selected="selected">Choose a Package</option>
+            <option value="5">5 Market 'Super Saver' - $35</option>
+            <option value="4">4 Markets - $30</option>
+            <option value="3">3 Markets - $26</option>
+            <option value="2">2 Markets - $18</option>
+            <option value="1">1 Market - $10</option>
+        </select>
+    </div>
+    
+
+       
+       CHECKBOXES FOR 5 MARKETS
        <div class="form row checkboxes subclass nonPhoto" id="5market" name="5market">
            <p class="packageName">Choose 5 Editions For Your Ad To Appear In</p>
            <label><input type="checkbox" name="5market" id="markets" checked>Exchange - Eastern Washington/ North
@@ -110,8 +120,8 @@
            <label><input type="checkbox" name="5market" id="markets" checked>Giant Nickel Online - Tri-Cities</label>
        </div>
        
-       
-       <!--CHECKBOXES FOR 4 MARKETS-->
+     
+       CHECKBOXES FOR 4 MARKETS
        <div class="form row checkboxes subclass nonPhoto" id="4market" name="4market">
            <p class="packageName">Choose 4 Editions For Your Ad To Appear In</p>
            <label><input type="checkbox" name="4market" id="markets">Exchange - Eastern Washington/ North Idaho</label>
@@ -123,7 +133,7 @@
        </div>
        
        
-       <!--CHECKBOXES FOR 3 MARKETS-->
+       CHECKBOXES FOR 3 MARKETS
        
        <div class="form row checkboxes subclass" id="3market" name="3market">
            <p class="packageName">Choose 3 Editions For Your Ad To Appear In</p>
@@ -135,7 +145,7 @@
            <label><input type="checkbox" name="3market" id="markets">Giant Nickel Online - Tri-Cities</label>
        </div>
        
-       <!--CHECKBOXES FOR 2 MARKETS-->
+       CHECKBOXES FOR 2 MARKETS
        
        <div class="form row checkboxes subclass" id="2market" name="2market">
            <p class="packageName">Choose 2 Editions For Your Ad To Appear In</p>
@@ -147,7 +157,7 @@
            <label><input type="checkbox" name="2market" id="markets">Giant Nickel Online - Tri-Cities</label>
        </div>
        
-       <!--CHECKBOXES FOR 1 MARKETS-->
+       CHECKBOXES FOR 1 MARKETS
        
        <div class="form row checkboxes subclass" id="1market" name="1market">
            <p class="packageName">Choose 1 Edition For Your Ad To Appear In</p>
@@ -159,11 +169,11 @@
            <label><input type="checkbox" name="1market" id="markets">Giant Nickel Online - Tri-Cities</label>
        </div>
        
-       <!-- <div id="showCount">
+     <div id="showCount">
        <label for="countEditions">Number Checked</label>
        <input type="text" name="countEditions" id="countEditions">
        </div>
-       -->
+    
        
        
        
@@ -171,7 +181,7 @@
        
        <div class=""  id="photoPackageYes" name="photoPackageYes">
        
-       <!--PHOTO PACKAGES-->
+       PHOTO PACKAGES
        
        <div class="form-row dropdown subclass" id="photoPackages" name="photoPackages">
            <label for="photoYes">Please Choose a Photo Package</label>
@@ -182,7 +192,8 @@
                <option value="photoBYO">Build Your Own Package</option>
            </select>
        </div>
-       <!-- STATIC DISPLAY FOR PHOTO AD IN 4 MARKETS -->
+       
+       STATIC DISPLAY FOR PHOTO AD IN 4 MARKETS
        
        <div class="form-row subclass" id="photo4Package" name="photo4Package">
            <p>Your ad will appear in these editions</p>
@@ -195,7 +206,7 @@
        </div>
        
        
-       <!-- PHOTO AD 1 MARKET - TEXT IN 3 MARKETS -->
+       PHOTO AD 1 MARKET - TEXT IN 3 MARKETS
        
        <div class="form-row subclass" id="photoText-photo" name="photoText-photo">
        <p class="packageName">Choose The Edition that you would like your photo to appear in</p>
@@ -214,7 +225,7 @@
        <label><input type="checkbox" name="threeTextOnly" id="threeTextOnly">Giant Nickel Online - Tri-Cities</label>
        </div>
        
-       <!-- PHOTO AD PACKAGE - BYO -->
+       PHOTO AD PACKAGE - BYO
        
        <div class="form-row subclass" id="photoText-BYO" name="photoText-BYO">
        <p class="packageName">Choose the Editions you would like your photo Ad to appear in</p>
@@ -225,11 +236,11 @@
        </div>
        
        
+    -->
        
+   
        
-       </div>
-       
-       <!-- ADD IN THE CONTROLS FOR UPLOADING A PHOTO -->
+       <!-- ADD IN THE CONTROLS FOR UPLOADING A PHOTO
        
        
        
@@ -238,7 +249,7 @@
 
 <span id="selectPhotoEdition"></span>
     </fieldset>
-    
+-->
     
     </form>
 <script src="ExchangeAdForm.js"></script>
