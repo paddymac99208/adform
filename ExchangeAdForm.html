@@ -68,22 +68,22 @@
        
         <div class="form-row dropdown" id="photoYesNo" name="photoYesNo">
            <label for="photoYN">Would You Like To Include a Photo With Your Ad?</label>
-           <select onchange="includePhoto()" name="photoYN" id="photoYN" required>
+           <select onchange="includePhoto()" name="photoYN" id="selIncludePhoto" required>
                <option value="SelectSub" selected="selected">Select an option</option>
                <option value="yes">Yes</option>
                <option value="no">No</option>
            </select>
        </div>
        
-       <div>
-       <span id="adPhotoPackages"></span>
+       <div id="divPhotoPackages">
        
        </div>
        
        
        
-       <div id="noPhotoDiv">
-       <span id="photoPackageNo" name="photoPackageNo"></span>
+       <div id="divNonPhotoPackage">
+       
+        <span id="photoPackageNo" name="photoPackageNo"></span>
     <select id="nonPhotoPackages" name="nonPhotoPackages" onchange="nonPhotoEditions()">
     <option value="Select A Package" class="nonPhotoPackages">Select A Package</option>
     </select>

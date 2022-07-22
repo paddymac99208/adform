@@ -204,12 +204,8 @@ const printEditions = [
 //SELECT ELEMENT - Would you like to include a photo with your ad?
 
 function includePhoto() {
-  let dropdown = document.getElementById("photoYN");
-  let photoPackageDD = document.getElementById("adPhotoPackages");
-  let nonPhotoPackagesDD = document.getElementById("nonPhotoPackages");
-  //photoPackageDD.style.display = "none";
-  //nonPhotoPackagesDD.style.display = "none";
-  if (dropdown.value == "yes") {
+  let selIncludePhoto = document.getElementById("selIncludePhoto");
+  if (selIncludePhoto.value === "yes") {
     addPhoto();
   } else {
     noPhoto();
@@ -218,42 +214,40 @@ function includePhoto() {
 //PHOTO PACKAGES
 
 function addPhoto() {
-  //show addPhoto div
-  document.getElementById("adPhotoPackages").style.display = "block";
-  //hide NoPhoto div
-  document.getElementById("noPhotoDiv").style.display = "none";
+  //toggle show/ hide divs
+  document.getElementById("divPhotoPackages").style.display = "block";
+  document.getElementById("divNonPhotoPackage").style.display = "none";
 
-  //FILTER PACKAGES THAT ACCEPT PHOTOS
+  //FILTER ONLY PACKAGES THAT ACCEPT PHOTOS
   const filterPackages = adPackages.filter(
     (package) => package.photo === "yes"
   );
-  let photoPackageDD = document.getElementById("adPhotoPackages");
+  let photoPackage = document.getElementById("divPhotoPackages");
+  photoPackage.innerHTML = "Please Choose a Photo Package <br>";
 
-  var adPhotoPackages = document.getElementById("adPhotoPackages");
-  adPhotoPackages.innerHTML = "Please Choose a Photo Package <br>";
-  var selectBox = document.createElement("SELECT");
+  //CONSTRUCTS SELECT ELEMENT AND OPTIONS FOR PHOTO PACKAGES
+  const selectBox = document.createElement("SELECT");
   selectBox.id = selectBox.name = "photoPackages";
-  adPhotoPackages.appendChild(selectBox);
-  //need to add in the default option 'choose a category'
-  var option = document.createElement("OPTION");
-  option.text = "Select a Package";
+  photoPackage.appendChild(selectBox);
+  //Default option 'Select A Photo Ad Package'
+  const option = document.createElement("OPTION");
+  option.text = "Select a Photo Ad Package";
   option.value = "Select Package";
-  option.setAttribute("class", "myPhotoPackages");
+  option.setAttribute("class", "PhotoPackages");
   selectBox.options.add(option);
-
-  for (var key in filterPackages) {
-    var value = filterPackages[key].package;
+  //Creates options List from adPackages array where Photo: === yes
+  for (let key in filterPackages) {
+    let value = filterPackages[key].package;
     let option = document.createElement("OPTION");
     option.text = value;
     option.value = key;
-    option.setAttribute("class", "myPhotoPackages");
+    option.setAttribute("class", "PhotoPackages");
     option.setAttribute("onclick", "selectTextEditions();"); //for Firefox
     option.onclick = function () {
       selectTextEditions();
     }; //for IE
     selectBox.options.add(option);
   }
-  //photoPackageDD.style.display = "block";
 }
 
 /****************************************************************
@@ -306,27 +300,40 @@ function photo4() {
 //NON-PHOTO PACKAGES
 
 function noPhoto() {
-  //hide addPhoto div
-  document.getElementById("adPhotoPackages").style.display = "none";
-  //add in the filter
+  //toggle show/ hide divs
+  document.getElementById("divPhotoPackages").style.display = "none";
+  document.getElementById("divNonPhotoPackage").style.display = "block";
+
+  //FILTER ONLY PACKAGES THAT DO NOT ACCEPT PHOTOS
   const filterPackages = adPackages.filter((package) => package.photo === "no");
-  console.log(filterPackages);
-  let noPhotoPackages = document.getElementById("photoPackageNo");
-  noPhotoPackages.innerHTML = "Please choose a Non-Photo Package <br>";
-  //Creates the available packages
+
+  let nonPhotoPackages = document.getElementById("divNonPhotoPackage");
+  nonPhotoPackages.innerHTML = "Please choose a Non Photo Package <br>";
+  //CONSTRUCTS SELECT ELEMENT AND OPTIONS FOR PHOTO PACKAGES
+  const selectBox = document.createElement("SELECT");
+  selectBox.id = selectBox.name = "nonPhotoPackages";
+  nonPhotoPackages.appendChild(selectBox);
+  //Default option 'Select A Photo Ad Package'
+  const option = document.createElement("OPTION");
+  option.text = "Select a Non-Photo Ad Package";
+  option.value = "Select Non Photo Package";
+  option.setAttribute("class", "nonPhotoPackages");
+  selectBox.options.add(option);
+  //Creates options List from adPackages array where Photo: === no
   for (let key in filterPackages) {
-    const selElm = document.getElementById("nonPhotoPackages");
+    //const selElm = document.getElementById("nonPhotoPackages");
     let option = document.createElement("OPTION");
     let value = filterPackages[key].package;
     option.text = value;
     option.value = filterPackages[key].value;
     option.setAttribute("class", "nonPhotoPackages");
-    selElm.options.add(option);
+    selectBox.options.add(option);
   }
 
-  document.getElementById("noPhotoDiv").style.display = "block";
+  document.getElementById("divNonPhotoPackage").style.display = "block";
 }
 
+//CHECK THESE NAMES ARE CORRECT
 const nonPhotoSelect = document.getElementById("nonPhotoPackages");
 nonPhotoSelect.addEventListener("change", nonPhotoEditions);
 
